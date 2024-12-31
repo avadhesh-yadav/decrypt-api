@@ -24,7 +24,7 @@ def decrypt():
         decrypted_text = f.decrypt(encrypted_token.encode('utf-8')).decode('utf-8')
 
         # Return the decrypted text
-        return jsonify({'decrypted': decrypted_text})
+        return ({'decrypted': decrypted_text})
 
     except Exception as e:
         # Return error message if decryption fails
