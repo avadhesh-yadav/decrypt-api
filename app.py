@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from cryptography.fernet import Fernet
+import json
 
 app = Flask(__name__)
 
@@ -24,7 +25,8 @@ def decrypt():
         decrypted_text = f.decrypt(encrypted_token.encode('utf-8')).decode('utf-8')
 
         # Return the decrypted text
-        return ({'decrypted': decrypted_text})
+        decrypted_json = json.loads(decrypted_text)
+        return jsonify(decrypted_json)
 
     except Exception as e:
         # Return error message if decryption fails
